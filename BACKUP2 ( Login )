@@ -1,0 +1,110 @@
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+	document.getElementById("user_div").style.display = "block";
+	document.getElementById("login_div").style.display = "none";
+	
+	var user = firebase.auth().currentUser;
+	if(user != null){
+		
+		var email_id = user.email;
+		
+		document.getElementById("user_para").innerHTML = "Welcome to FireBase, " + email_id;
+		
+		window.alert("user_para");
+		
+	}
+	
+  } else {
+    // No user is signed in.
+	document.getElementById("user_div").style.display = "none";
+	document.getElementById("login_div").style.display = "block";
+  }
+});
+
+
+
+function login(){
+	
+	var userEmail  = document.getElementById("email_field").value;
+	var userPass  = document.getElementById("password_field").value;
+	
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+	// Handle Errors here.
+	var errorCode = error.code;
+	var errorMessage = error.message;
+	
+	window.alert("Error: " + errorMessage);
+	// ...
+	});
+	
+	//window.alert(userEmail + " " + userPass);
+}
+
+
+
+function logout(){
+	
+	firebase.auth().signOut().then(function() {
+	window.alert("You have signed out successfully");	
+	// Sign-out successful.
+	}).catch(function(error) {
+	// An error happened.
+	});
+	
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SwinHive</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SwinHive | Swinburne's video-sharing platform" />
+    <meta name="keywords" content="videos, Swinburne" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/registration.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+    <div id="login_div">
+        <h1>Login</h1>
+        <input type="email" placeholder="Email.." id="email_field" />
+        <input type="password" placeholder="Password.." id="password_field" />
+
+        <button onclick="login()">Login</button>
+        <p><a href="">Forgot Password?</a></p>
+        <p>Don't have an account?<a href="registration.html">Sign Up</a></p>
+    </div>
+
+    <div id="user_div">
+        <h2>Hello There</h2>
+        <p id="user_para">Welcome to Firebase web login example. You are currently logged in.</p>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-database.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBM0e_dkZOgrC5v5kk1t1loGAj1GiFntyA",
+            authDomain: "educational-video-learning-app.firebaseapp.com",
+            databaseURL: "https://educational-video-learning-app.firebaseio.com",
+            projectId: "educational-video-learning-app",
+            storageBucket: "educational-video-learning-app.appspot.com",
+            messagingSenderId: "1079981333838"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="js/login.js"></script>
+
+</body>
+</html>
