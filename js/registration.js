@@ -2,7 +2,13 @@
 /*eslint-env browser*/
 
 window.onload = function () {
-    document.getElementById('registration').addEventListener('submit', submitForm);
+    'use strict';
+    
+    var reg = document.getElementById('registration');
+    
+    if(reg) {
+        reg.addEventListener('submit',submitForm)
+    }
 
     function submitForm(e) {
         e.preventDefault();

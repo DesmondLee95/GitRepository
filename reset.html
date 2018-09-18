@@ -10,19 +10,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/registration.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
 
-    <div id="login_div">
-        <h1>Login</h1>
-        <input type="email" placeholder="Email.." id="email_field" />
-        <input type="password" placeholder="Password.." id="password_field" />
-
-        <button onclick="login()">Login</button>
-        <p><a href="reset.html">Forgot Password?</a></p>
-        <p>Don't have an account?<a href="registration.html">Sign Up</a></p>
+    <div>
+        <h2>Reset your password</h2>
+        <p>To reset your password, please enter your account's email address.</p>
+        <input type="email" id="user_mail" placeholder="Fill in your email" />
+        <button onclick="resetPass()">Reset My Password</button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
@@ -38,10 +36,9 @@
             messagingSenderId: "1079981333838"
         };
         firebase.initializeApp(config);
-
     </script>
     <script src="js/login.js"></script>
-    <script src="js/registration.js"></script>
+
 </body>
 
 </html>
