@@ -5,7 +5,7 @@ window.onload = function () {
     'use strict';
 
     var reg = document.getElementById('registration');
-
+    
     if (reg) {
         reg.addEventListener('submit', submitForm)
     }
@@ -23,6 +23,7 @@ window.onload = function () {
             hasNumbers = /\d/.test(upass),
             hasNonalphas = /\W/.test(upass);
 
+        //Form verification before submission
         if (umail == "" || upass == "" || cupass == "") {
             alert("Please fill in all your details.");
             return false;
@@ -33,11 +34,13 @@ window.onload = function () {
             alert("Password is too weak, please include a mix of upper and lowercase letters, numbers and no symbols.");
             return false;
         } else {
+            //Email validation
             var regex = /^.[^a-z]{4,11}[0-9]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
                 regex2 = /^[^0-9]{1,10}[a-z]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
                 user = firebase.auth().currentUser;
 
             if (regex.test(umail)) {
+                //Email validation for student emails
                 if (umail.indexOf('@students.swinburne.edu.my', umail.length - '@students.swinburne.edu.my'.length) !== -1) {
                     firebase.auth()
                         .createUserWithEmailAndPassword(umail, upass)
@@ -71,6 +74,7 @@ window.onload = function () {
                     document.getElementById('usermail').focus();
                 }
             } else if (regex2.test(umail)) {
+                //Email validation for staff emails
                 if (umail.indexOf('@swinburne.edu.my', umail.length - '@swinburne.edu.my'.length) !== -1) {
                     firebase.auth()
                         .createUserWithEmailAndPassword(umail, upass)

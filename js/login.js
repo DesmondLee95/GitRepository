@@ -11,6 +11,7 @@ function login() {
     auth.signInWithEmailAndPassword(userEmail, userPass)
         .then(function (user) {
             firebase.auth().onAuthStateChanged(function (user) {
+                //Check if user is verified before allowing login
                 if (user.emailVerified) {
                     // User is signed in.
                     window.location = "index.html";
