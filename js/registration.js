@@ -47,7 +47,7 @@ window.onload = function () {
                                     console.log("Verified");
                                 } else {
                                     user.sendEmailVerification().then(function () {
-                                        alert("You've successfully logged in, please verify your Email to login.");
+                                        alert("You've successfully signed up, please verify your email to login.");
                                         // Email sent.
                                         document.getElementById('registration').reset();
                                         window.location = 'login.html';
@@ -76,7 +76,7 @@ window.onload = function () {
                                     console.log("Verified");
                                 } else {
                                     user.sendEmailVerification().then(function () {
-                                        alert("You've successfully logged in, please verify your Email to login.");
+                                        alert("You've successfully signed up, please verify your Email to login.");
                                         // Email sent.
                                         document.getElementById('registration').reset();
                                         window.location = 'login.html';

@@ -13,11 +13,10 @@ function login() {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user.emailVerified) {
                     // User is signed in.
-                    alert("You've successfully logged in.");
                     window.location = "index.html";
                 } else {
                     //User not signed in.
-                    alert("Please verify your E-mail.");
+                    alert("Please verify your email before logging in.");
                 }
             });
         }).catch(function (error) {
@@ -52,7 +51,8 @@ function resetPass() {
 
     auth.sendPasswordResetEmail(emailAddress).then(function () {
         // Email sent.
-        alert("E-mail has been sent to reset your password.");
+        alert("A reset password email has been sent to your email");
+        window.location = "login.html";
     }).catch(function (error) {
         // An error happened.
         console.log("Email has not been sent.");
