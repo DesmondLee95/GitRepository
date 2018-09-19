@@ -25,6 +25,10 @@ h2{
     padding: 10px;
 }
 
+p.reset_info {
+    font-size: 12px;
+}
+
 .centered {
     float: none;
     margin: auto;
@@ -33,6 +37,7 @@ h2{
 html, body {
     overflow: auto;
 }
+
 .btn-change{
     height: 40px;
     width: 100px;
@@ -45,6 +50,9 @@ html, body {
     color: #fff;
 }
 
+#reset_inf {
+    margin-bottom: 0rem;
+}
 .input-group {
     width:430px;
 }

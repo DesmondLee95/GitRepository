@@ -26,6 +26,9 @@ function login() {
 
             window.alert("Error: " + errorMessage);
             // ...
+            document.getElementById('email_field').value = "";
+            document.getElementById('password_field').value = "";
+            document.getElementById('email_field').focus();
         });
 }
 
@@ -56,5 +59,8 @@ function resetPass() {
     }).catch(function (error) {
         // An error happened.
         console.log("Email has not been sent.");
+        alert("This email address does not exist.");
+        document.getElementById('user_mail').value = "";
+        document.getElementById('user_mail').focus();
     });
 };

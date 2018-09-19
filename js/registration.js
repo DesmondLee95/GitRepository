@@ -3,11 +3,11 @@
 
 window.onload = function () {
     'use strict';
-    
+
     var reg = document.getElementById('registration');
-    
-    if(reg) {
-        reg.addEventListener('submit',submitForm)
+
+    if (reg) {
+        reg.addEventListener('submit', submitForm)
     }
 
     function submitForm(e) {
@@ -65,6 +65,10 @@ window.onload = function () {
                         });
                 } else {
                     alert('Email must be a valid Swinburne Sarawak Email.');
+                    document.getElementById('usermail').value = "";
+                    document.getElementById('userpass').value = "";
+                    document.getElementById('cuserpass').value = "";
+                    document.getElementById('usermail').focus();
                 }
             } else if (regex2.test(umail)) {
                 if (umail.indexOf('@swinburne.edu.my', umail.length - '@swinburne.edu.my'.length) !== -1) {
@@ -94,9 +98,17 @@ window.onload = function () {
                         });
                 } else {
                     alert('Email must be a valid Swinburne Sarawak Email.');
+                    document.getElementById('usermail').value = "";
+                    document.getElementById('userpass').value = "";
+                    document.getElementById('cuserpass').value = "";
+                    document.getElementById('usermail').focus();
                 }
             } else {
                 alert('Not a valid e-mail address.');
+                document.getElementById('usermail').value = "";
+                document.getElementById('userpass').value = "";
+                document.getElementById('cuserpass').value = "";
+                document.getElementById('usermail').focus();
             }
         }
     }
