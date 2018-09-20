@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SwinHive | Administration</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SwinHive | Swinburne's video-sharing platform" />
+    <meta name="keywords" content="videos, Swinburne" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <h>SwinHive</h>
+    <input type="text" id="search_user" name="search_user" />
+
+    Filter by:
+    <select>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+    </select>
+
+    Sort by:
+    <select>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+    </select>
+
+    <table>
+        <tr>
+            <th>Profile Picture</th>
+            <th>Username</th>
+            <th>Student ID</th>
+            <th>Course</th>
+            <th>Joined Date</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-database.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBM0e_dkZOgrC5v5kk1t1loGAj1GiFntyA",
+            authDomain: "educational-video-learning-app.firebaseapp.com",
+            databaseURL: "https://educational-video-learning-app.firebaseio.com",
+            projectId: "educational-video-learning-app",
+            storageBucket: "educational-video-learning-app.appspot.com",
+            messagingSenderId: "1079981333838"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+</body>
