@@ -11,6 +11,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var db = firebase.firestore();
+
+db.settings({
+    timestampsInSnapshots: true
+});
+
 function login() {
     'use strict';
 

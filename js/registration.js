@@ -1,11 +1,27 @@
 /*jslint devel: true*/
 /*eslint-env browser*/
 
+var config = {
+    apiKey: "AIzaSyBM0e_dkZOgrC5v5kk1t1loGAj1GiFntyA",
+    authDomain: "educational-video-learning-app.firebaseapp.com",
+    databaseURL: "https://educational-video-learning-app.firebaseio.com",
+    projectId: "educational-video-learning-app",
+    storageBucket: "educational-video-learning-app.appspot.com",
+    messagingSenderId: "1079981333838"
+};
+firebase.initializeApp(config);
+
+var db = firebase.firestore();
+
+db.settings({
+    timestampsInSnapshots: true
+});
+
 window.onload = function () {
     'use strict';
 
     var reg = document.getElementById('registration');
-    
+
     if (reg) {
         reg.addEventListener('submit', submitForm)
     }
@@ -45,6 +61,18 @@ window.onload = function () {
                     firebase.auth()
                         .createUserWithEmailAndPassword(umail, upass)
                         .then(function (user) {
+                            db.collection("Users").doc(umail).set({
+                                    Name: "",
+                                    Email: umail,
+                                    Course: "",
+                                    video_upload: 0,
+                                })
+                                .then(function () {
+                                    console.log("Document successfully written!");
+                                })
+                                .catch(function (error) {
+                                    console.error("Error writing document: ", error);
+                                });
                             firebase.auth().onAuthStateChanged(function (user) {
                                 if (user.emailVerified) {
                                     console.log("Verified");
@@ -79,6 +107,18 @@ window.onload = function () {
                     firebase.auth()
                         .createUserWithEmailAndPassword(umail, upass)
                         .then(function (user) {
+                            db.collection("Users").doc(umail).set({
+                                    Name: "",
+                                    Email: umail,
+                                    Course: "",
+                                    video_upload: 0,
+                                })
+                                .then(function () {
+                                    console.log("Document successfully written!");
+                                })
+                                .catch(function (error) {
+                                    console.error("Error writing document: ", error);
+                                });
                             firebase.auth().onAuthStateChanged(function (user) {
                                 if (user.emailVerified) {
                                     console.log("Verified");
