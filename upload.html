@@ -20,6 +20,24 @@
     <h2>Upload Video</h2>
     <input type="file" id="file">
     <br />
+    <select id="visibility">
+        <option value="true">Public</option>
+        <option value="false">Private</option>
+    </select>
+    <input type="text" id="video_name" placeholder="Video Name.." />
+    <input type="text" id="video_desc" placeholder="Description.." />
+    <select id="category">
+        <option value="business">Business</option>
+        <option value="design">Design</option>
+        <option value="engineering">Engineering</option>
+        <option value="science">Science</option>
+        <option value="computing">Computing</option>
+        <option value="english">English Language</option>
+        <option value="p(coursework)">Postgraduate (Coursework)</option>
+        <option value="p(research)">Postgraduate (Research)</option>
+        <option value="short_courses">Short courses</option>
+    </select>
+    <input type="text" id="video_tag" placeholder="Tags.." />
     <button type="btn btn-primary" id="uploadButton" onclick="uploadFile()">Submit</button>
 
     <br /><progress value="0" max="100" id="upload_progress">0%</progress>

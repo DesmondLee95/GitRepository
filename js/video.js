@@ -10,3 +10,33 @@ var config = {
     messagingSenderId: "1079981333838"
 };
 firebase.initializeApp(config);
+
+var db = firebase.firestore();
+
+db.settings({
+    timestampsInSnapshots: true
+});
+
+var videosRef = db.collection("Videos").doc(); //@TODO
+
+
+videosRef.get().then(function (doc) {
+    if (doc.exists) {
+        var videoDate = new Date(doc.data().date_uploaded.toDate());
+        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][videoDate.getMonth()];
+        var uploadDate = month + ' ' + videoDate.getDate() + ', ' + videoDate.getFullYear();
+        console.log(videoDate);
+
+        document.getElementById('video_name').innerHTML = doc.data().video_name;
+        document.getElementById('video_rating').innerHTML = doc.data().video_rating;
+        document.getElementById('uploader').innerHTML = doc.data().video_uploader;
+        document.getElementById('video_desc').innerHTML = doc.data().video_desc;
+        document.getElementById('uploaded_date').innerHTML = uploadDate;
+        document.getElementById('video_category').innerHTML = doc.data().video_category;
+
+    } else {
+        console.log("No such document!");
+    }
+}).catch(function (error) {
+    console.log("Error getting document:", error);
+});

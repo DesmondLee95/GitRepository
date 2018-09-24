@@ -23,7 +23,7 @@ var progressBar = document.getElementById('upload_progress');
 document.getElementById("file").addEventListener('change', function (e) {
     'use strict';
     selectedFile = e.target.files[0];
-})
+});
 
 function uploadFile() {
     'use strict';
@@ -45,32 +45,52 @@ function uploadFile() {
                     break;
             }
         },
-        function (error) {
+        function error(err) {
 
         },
-        function () {
+        function complete() {
+            var video_name = document.getElementById('video_name').value,
+                video_tag = document.getElementById('video_tag').value,
+                video_category = document.getElementById('category').value,
+                visibility = document.getElementById('visibility').value,
+                video_desc = document.getElementById('video_desc').value,
+                visibility_boolean = (visibility === "true");
+
+
+
             upload.snapshot.ref.getDownloadURL().then(
                 function (downloadURL) {
-                    console.log('File available at', downloadURL);
-
                     firebase.auth().onAuthStateChanged(function (user) {
                         if (user) {
-                            db.collection("Videos").doc("GG").set({
-                                    Link: downloadURL,
-                                    UserID: user.uid,
-                                    Category: "Jumbo",
-                                    Description: "Annyeong",
-                                    Date_Uploaded: new Date("December 23, 2018"),
-                                    Visibility: true,
-                                    Rating: 1,
-                                    Name: "bye"
-                                })
-                                .then(function () {
-                                    console.log("Document successfully written!");
-                                })
-                                .catch(function (error) {
-                                    console.error("Error writing document: ", error);
-                                });
+                            //Get logged-in username to store with the uplaoded video
+                            var docRef = db.collection("Users").doc(user.email);
+                            docRef.get().then(function (doc) {
+                                if (doc.exists) {
+                                    var user;
+                                    user = doc.data().Name;
+                                    db.collection("Videos").doc().set({
+                                            video_link: downloadURL,
+                                            video_uploader: user,
+                                            video_category: video_category,
+                                            video_tags: video_tag,
+                                            video_desc: video_desc,
+                                            date_uploaded: new Date(),
+                                            video_visibility: visibility_boolean,
+                                            video_rating: 0,
+                                            video_name: video_name
+                                        })
+                                        .then(function () {
+                                            console.log("Document successfully written!");
+                                        })
+                                        .catch(function (error) {
+                                            console.error("Error writing document: ", error);
+                                        });
+
+                                } else {
+                                    console.log("No such document!");
+                                }
+                            })
+
                         } else {
 
                         }

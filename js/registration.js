@@ -32,6 +32,7 @@ window.onload = function () {
         var umail = document.getElementById("usermail").value,
             upass = document.getElementById("userpass").value,
             cupass = document.getElementById("cuserpass").value,
+            uname = document.getElementById("username").value,
 
             //Password Complexity Regex
             hasUpperCase = /[A-Z]/.test(upass),
@@ -40,7 +41,7 @@ window.onload = function () {
             hasNonalphas = /\W/.test(upass);
 
         //Form verification before submission
-        if (umail == "" || upass == "" || cupass == "") {
+        if (umail == "" || upass == "" || cupass == "" || uname == "") {
             alert("Please fill in all your details.");
             return false;
         } else if (upass != cupass) {
@@ -62,7 +63,7 @@ window.onload = function () {
                         .createUserWithEmailAndPassword(umail, upass)
                         .then(function (user) {
                             db.collection("Users").doc(umail).set({
-                                    Name: "",
+                                    Name: uname,
                                     Email: umail,
                                     Course: "",
                                     video_upload: 0,
