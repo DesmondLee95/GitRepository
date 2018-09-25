@@ -11,8 +11,23 @@ var config = {
 };
 firebase.initializeApp(config);
 
+/* var messaging = firebase.messaging();
+messaging.requestPermission()
+.then(function() {
+    return messaging.getToken();
+})
+.then(function(token) {
+    console.log(token);
+})
+.catch(function(err) {
+    console.log('Error Occured.');
+}) */
+
+
+//Initialize firestore
 var db = firebase.firestore();
 
+// Disable deprecated features for Firestore
 db.settings({
     timestampsInSnapshots: true
 });

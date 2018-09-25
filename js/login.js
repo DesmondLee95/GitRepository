@@ -49,21 +49,6 @@ function login() {
         });
 }
 
-function logOut() {
-    'use strict';
-    var auth = firebase.auth();
-
-    auth.signOut().then(function () {
-        // Sign-out successful.
-        alert("You've logged out.");
-        window.location = "login.html";
-    }).catch(function (error) {
-        // An error happened.
-        console.log("User not logged out.");
-    });
-
-}
-
 function resetPass() {
     'use strict';
     var auth = firebase.auth(),

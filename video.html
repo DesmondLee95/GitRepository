@@ -8,34 +8,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="SwinHive | Swinburne's video-sharing platform" />
     <meta name="keywords" content="videos, Swinburne" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="css/custom.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/video.css" />
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" roles="navigation">
-        <h1 id="logo" style="color:White;">
-            SwinHive
-        </h1>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">SwinHive</a>
+            </div>
+        </div>
+
     </nav>
-    <!-- <video width="720" height="480" controls>
-        <source src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/userVideos%2FLovelyz%20-%20Twinkle%20(lal.MP4?alt=media&token=83479c17-40f7-4be3-9508-d32a42d0d06c" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video> -->
-    <div id="video_name"></div>
-    <div id="video_rating"></div>
-    <div id="uploader"></div>
-    <div id="video_desc"></div>
-    Published on <div id="uploaded_date"></div>
-    <div id="video_category"></div>
-    <a href="#">Haha</a>
+    <div class="container">
+        <div class="row firstrow">
+            <div class="col-md-12 videoBox">
+                <video width="720" height="480" class="videoPlayer" controls>
+                    <source src="https://www.youtube.com/watch?v=v0FojhntO_4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-md-10">
+                <div id="video_name" class="vidname">TEDTALK 2018 XDDDD</div>
+            </div>
+            <div class="col-sm-2 col-md-2 flagvid">
+                <label for="flagbtn">
+                    <i class="fas fa-flag fa-lg"></i>
+                    <button type="button" id="flagbtn" class="flagbtn" onclick="">Flag Video</button>
+                </label>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 vidrate_views">
+                <span class="glyphicon glyphicon-star-empty"></span> <span id="video_rating"><strong>5.5</strong></span> | <span id="video_views">12314232</span> views
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="hrline">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-7 uploaderBox">
+                <a href="#" class="links">
+                    <!-- uploader image -->
+                    <span id="uploader" class="uploader" href="#">Desmond Lee</span>
+                </a>
+            </div>
+            <div class="col-md-offset-2 col-md-4 col-sm-5 publishBox">
+                <em>Published on:</em> <span id="uploaded_date" class="uploaded_date">28 September, 2018</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 descBox">
+                <div id="video_desc"></div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vestibulum lorem justo, vel lacinia erat euismod non. Donec massa magna, dignissim eget libero at, scelerisque cursus mauris. Suspendisse quis ultricies urna. Phasellus neque quam, convallis non dignissim eget, ullamcorper vitae nibh. Nullam viverra ultrices sapien id luctus. Curabitur elementum, leo sed dictum varius, sapien lacus molestie dolor, vitae auctor augue velit vitae augue. Nulla facilisi. Proin a laoreet velit. Nunc ac lacus justo. Donec suscipit maximus neque ut mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 categoryBox">
+                <strong style="font-size: 14px;">Category:</strong> <span id="video_category">Business</span>
+            </div>
+        </div>
+
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-messaging.js"></script>
     <script src="js/video.js"></script>
 </body>

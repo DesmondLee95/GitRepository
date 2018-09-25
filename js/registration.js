@@ -67,6 +67,7 @@ window.onload = function () {
                                     Email: umail,
                                     Course: "",
                                     video_upload: 0,
+                                    photoURL: "";
                                 })
                                 .then(function () {
                                     console.log("Document successfully written!");
@@ -97,6 +98,7 @@ window.onload = function () {
                         });
                 } else {
                     alert('Email must be a valid Swinburne Sarawak Email.');
+                    document.getElementById('username').value = "";
                     document.getElementById('usermail').value = "";
                     document.getElementById('userpass').value = "";
                     document.getElementById('cuserpass').value = "";
@@ -113,6 +115,7 @@ window.onload = function () {
                                     Email: umail,
                                     Course: "",
                                     video_upload: 0,
+                                    photoURL: "";
                                 })
                                 .then(function () {
                                     console.log("Document successfully written!");
@@ -143,6 +146,7 @@ window.onload = function () {
                         });
                 } else {
                     alert('Email must be a valid Swinburne Sarawak Email.');
+                    document.getElementById('username').value = "";
                     document.getElementById('usermail').value = "";
                     document.getElementById('userpass').value = "";
                     document.getElementById('cuserpass').value = "";
@@ -150,6 +154,7 @@ window.onload = function () {
                 }
             } else {
                 alert('Not a valid e-mail address.');
+                document.getElementById('username').value = "";
                 document.getElementById('usermail').value = "";
                 document.getElementById('userpass').value = "";
                 document.getElementById('cuserpass').value = "";

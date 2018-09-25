@@ -1,0 +1,38 @@
+html,
+body {
+    background-color: #D3D3D3;
+}
+
+.navbar {
+    background-color: red;
+}
+
+.row.firstrow {
+    padding-top: 20px;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.container {
+    background-color: white;
+    position: relative;
+}
+
+li:first-child a.uploadicon {
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+li:first-child a.uploadicon:hover {
+    color: lightgray;
+}
+
+li:nth-child(2) a.logout {
+    color: white;
+}
