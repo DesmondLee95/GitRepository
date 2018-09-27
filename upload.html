@@ -31,30 +31,30 @@
                 <input type="file" id="file" class="inputfile" />
                 <label class="uploads" for="file">
                     <i class="fas fa-upload fa-4x"></i>
+                    <br />
                     <div id="upload_text">Choose a file to upload</div>
                 </label>
-                <progress value="0" max="100" class="upload_progress" id="upload_progress">0%</progress>
+                <progress value="0" max="100" class="upload_progress" id="upload_progress"></progress>
 
-                <p class="warningWords">Warning: Maximum file size allowed is 30MB.</p>
+                <p class="warningWords">Warning: Maximum file size allowed is 40MB.</p>
             </div>
             <div class="col-md-7 col-sm-6">
                 <div class="row">
                     <div class="col-md-12 visiblealign">
                         <select class="visiblebox" id="visibility">
                             <option value="true">Public</option>
-                            <option value="false">Private</option>
-                        </select>
+                            <option value="false">Private</option></select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="vid_name" id="video_name" placeholder="Video Name.." />
+                        <input type="text" class="vid_name" id="video_name" placeholder="Video Name.. (Max. Characters: 32)" />
                         <br />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="vid_desc" id="video_desc" placeholder="Description.." />
+                        <textarea type="text" rows="8" class="vid_desc" id="video_desc" placeholder="Description.."></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -98,4 +98,5 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-messaging.js"></script>
     <script src="js/upload.js"></script>
+    <script src="js/main.js"></script>
 </body>

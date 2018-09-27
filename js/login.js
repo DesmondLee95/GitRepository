@@ -11,12 +11,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var db = firebase.firestore();
-
-db.settings({
-    timestampsInSnapshots: true
-});
-
 function login() {
     'use strict';
 
@@ -26,7 +20,7 @@ function login() {
 
     auth.signInWithEmailAndPassword(userEmail, userPass)
         .then(function (user) {
-            firebase.auth().onAuthStateChanged(function (user) {
+            auth.onAuthStateChanged(function (user) {
                 //Check if user is verified before allowing login
                 if (user.emailVerified) {
                     // User is signed in.
@@ -51,6 +45,7 @@ function login() {
 
 function resetPass() {
     'use strict';
+
     var auth = firebase.auth(),
         emailAddress = document.getElementById("user_mail").value;
 

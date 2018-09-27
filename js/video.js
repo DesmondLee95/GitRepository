@@ -23,7 +23,6 @@ messaging.requestPermission()
     console.log('Error Occured.');
 }) */
 
-
 //Initialize firestore
 var db = firebase.firestore();
 
@@ -32,26 +31,29 @@ db.settings({
     timestampsInSnapshots: true
 });
 
-var videosRef = db.collection("Videos").doc(); //@TODO
-
+var videosRef = db.collection("Videos").doc(""); //@TODO
 
 videosRef.get().then(function (doc) {
+    'use strict';
+
     if (doc.exists) {
-        var videoDate = new Date(doc.data().date_uploaded.toDate());
-        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][videoDate.getMonth()];
-        var uploadDate = month + ' ' + videoDate.getDate() + ', ' + videoDate.getFullYear();
-        console.log(videoDate);
+        var videoDate = new Date(doc.data().date_uploaded.toDate()),
+            month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][videoDate.getMonth()],
+            uploadDate = month + ' ' + videoDate.getDate() + ', ' + videoDate.getFullYear();
+
+        console.log(doc.data());
 
         document.getElementById('video_name').innerHTML = doc.data().video_name;
         document.getElementById('video_rating').innerHTML = doc.data().video_rating;
         document.getElementById('uploader').innerHTML = doc.data().video_uploader;
         document.getElementById('video_desc').innerHTML = doc.data().video_desc;
         document.getElementById('uploaded_date').innerHTML = uploadDate;
+        document.getElementById('videolink').src = doc.data().video_link;
         document.getElementById('video_category').innerHTML = doc.data().video_category;
-
     } else {
         console.log("No such document!");
     }
 }).catch(function (error) {
+    'use strict';
     console.log("Error getting document:", error);
 });
