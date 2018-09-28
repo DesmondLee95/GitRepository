@@ -31,6 +31,65 @@ db.settings({
     timestampsInSnapshots: true
 });
 
+
+function createComments() {
+    /* firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            //Get logged-in username to store with the uploaded video
+            var userRef = db.collection("Users").doc(user.email);
+            var videoRef = db.collection("Videos").doc("");
+
+            userRef.get().then(function (doc) {
+                if (doc.exists) {
+                    var userImage;
+                    user = doc.data().photoURL;
+                    db.collection("Comments").doc().set({
+                            comment_content = userInput,
+                            comment_uid = user.uid,
+                            comment_vid =
+
+                        })
+                        .then(function () {
+                            //Clear form when video is successfully updated
+                        })
+                        .catch(function (error) {
+                            console.error("Error writing document: ", error);
+                        });
+                } else {
+                    console.log("No such document!");
+                }
+            });
+        } else {
+            alert("Please sign-in first!");
+        }
+    }); */
+
+    var userInput = document.getElementById("vid_comment").value;
+
+    var bigDiv = document.createElement("div");
+    var ImgColDiv = document.createElement("div");
+    var TextColDiv = document.createElement("div");
+    var userImage = document.createElement("img");
+    userImage.src = 'https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7';
+    userImage.setAttribute("height", "30");
+    userImage.setAttribute("width", "30");
+    userImage.setAttribute("alt", "Image");
+    //var ImgColDivContent = doc.data()
+    var TextColDivContent = document.createTextNode(userInput);
+    var cgroup = document.getElementById("commentGroup");
+
+    bigDiv.className = 'row commentedBox';
+    ImgColDiv.className = 'col-md-1 col-sm-1 imageBoxComment';
+    TextColDiv.className = 'col-md-11 col-sm-11 commentArea';
+    bigDiv.appendChild(ImgColDiv);
+    bigDiv.appendChild(TextColDiv);
+
+    ImgColDiv.appendChild(userImage);
+    TextColDiv.appendChild(TextColDivContent);
+
+    cgroup.appendChild(bigDiv);
+}
+
 var videosRef = db.collection("Videos").doc(""); //@TODO
 
 videosRef.get().then(function (doc) {

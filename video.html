@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/video.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
@@ -85,20 +86,31 @@
                 <strong style="font-size: 14px;">Tags:</strong> <span id="video_category"></span>
             </div>
         </div>
+        
         <hr class="hrline2">
         <div class="row">
             <div class="col-md-1 col-sm-1 imageBox">
-                <label for="">
-                    <a href="upload.html"><img src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="35" width="35" /></a>
+                <label for="userBtn">
+                    <img class="userimg" src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="35" width="35" />
+                    <button type="button" id="userBtn" class="userBtn" onclick=""></button>
                 </label>
             </div>
             <div class="col-md-11 col-sm-11 commentBox">
                 <textarea type="text" rows="1" id="vid_comment" class="vid_comment" placeholder="Add a comment.."></textarea>
-                <button type="button" id="post" class="post">POST</button>
+                <button type="btn" id="post" class="post" onclick="createComments()">POST</button>
             </div>
         </div>
+        
+        <div id="commentGroup">
+            <div class="row commentedBox">
+                <div class="col-md-1 col-sm-1 imageBoxComment">
+                    <img class="userimg" src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="30" width="30" />
+                </div>
+                <div class="col-md-11 col-sm-11 commentArea">
+                    Hello Hello HelloHello HelloHello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello
+                </div>
+        </div>
     </div>
-
 
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-auth.js"></script>

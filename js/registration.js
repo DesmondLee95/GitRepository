@@ -23,7 +23,7 @@ window.onload = function () {
     var reg = document.getElementById('registration');
 
     if (reg) {
-        reg.addEventListener('submit', submitForm)
+        reg.addEventListener('submit', submitForm);
     }
 
     function submitForm(e) {
@@ -53,8 +53,7 @@ window.onload = function () {
         } else {
             //Email validation
             var regex = /^[^a-z]{4,11}[0-9]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
-                regex2 = /^[^0-9]{1,10}[a-z]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
-                user = firebase.auth().currentUser;
+                regex2 = /^[^0-9]{1,10}[a-z]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
 
             if (regex.test(umail)) {
                 //Email validation for student emails
@@ -67,7 +66,7 @@ window.onload = function () {
                                     Email: umail,
                                     Course: "",
                                     video_upload: 0,
-                                    photoURL: "";
+                                    photoURL: ""
                                 })
                                 .then(function () {
                                     console.log("Document successfully written!");
@@ -115,7 +114,7 @@ window.onload = function () {
                                     Email: umail,
                                     Course: "",
                                     video_upload: 0,
-                                    photoURL: "";
+                                    photoURL: ""
                                 })
                                 .then(function () {
                                     console.log("Document successfully written!");
