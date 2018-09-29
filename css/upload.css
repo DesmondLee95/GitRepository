@@ -2,11 +2,6 @@
     padding-top: 20px;
 }
 
-.container {
-    background-color: white;
-    position: relative;
-}
-
 .visiblealign {
     text-align: right;
 }
@@ -110,13 +105,6 @@
 
 .upload_progress::-webkit-progress-value {
     background-color: limegreen;
-}
-
-.upload_progress::before {
-    content: '80%';
-    position: absolute;
-    right: 0;
-    top: -125%;
 }
 
 .progress-bar {

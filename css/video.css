@@ -6,6 +6,14 @@
     padding: 2px 10px 2px 10px;
 }
 
+.post:disabled {
+    background-color: #cccccc;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 3px;
+    padding: 2px 10px 2px 10px;
+}
+
 .commentedBox {
     margin-bottom: 15px;
 }
@@ -13,6 +21,7 @@
 div.commentArea {
     word-wrap: break-word;
     padding: 0px 10px 0px 0px;
+    margin-bottom: 5px;
 }
 
 .imageBox {
@@ -21,14 +30,14 @@ div.commentArea {
 
 .imageBoxComment {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 3px;
 }
 
 .commentBox {
     padding-left: 0;
     padding-top: 1px;
     text-align: right;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -111,6 +120,14 @@ div.commentArea {
 .userimg {
     cursor: pointer;
 }
+
+.commentPoster {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0px 10px 0px 0px;
+    color: 
+}
+
 .flagbtn {
     width: 0.1px;
     height: 0.1px;

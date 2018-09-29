@@ -86,29 +86,22 @@
                 <strong style="font-size: 14px;">Tags:</strong> <span id="video_category"></span>
             </div>
         </div>
-        
+
         <hr class="hrline2">
         <div class="row">
-            <div class="col-md-1 col-sm-1 imageBox">
+            <div class="col-md-1 col-sm-1 col-xs-2 imageBox">
                 <label for="userBtn">
                     <img class="userimg" src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="35" width="35" />
                     <button type="button" id="userBtn" class="userBtn" onclick=""></button>
                 </label>
             </div>
-            <div class="col-md-11 col-sm-11 commentBox">
-                <textarea type="text" rows="1" id="vid_comment" class="vid_comment" placeholder="Add a comment.."></textarea>
-                <button type="btn" id="post" class="post" onclick="createComments()">POST</button>
+            <div class="col-md-11 col-sm-11 col-xs-10 commentBox">
+                <textarea type="text" rows="1" id="vid_comment" class="vid_comment" onkeyup="emptyInput()" placeholder="Add a comment.."></textarea>
+                <button type="btn" id="post" class="post" onclick="createComments()" disabled>POST</button>
             </div>
         </div>
-        
+
         <div id="commentGroup">
-            <div class="row commentedBox">
-                <div class="col-md-1 col-sm-1 imageBoxComment">
-                    <img class="userimg" src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="30" width="30" />
-                </div>
-                <div class="col-md-11 col-sm-11 commentArea">
-                    Hello Hello HelloHello HelloHello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello
-                </div>
         </div>
     </div>
 
