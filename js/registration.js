@@ -34,26 +34,27 @@ window.onload = function () {
             cupass = document.getElementById("cuserpass").value,
             uname = document.getElementById("username").value,
 
-            //Password Complexity Regex
+            //Password Complexity validation
             hasUpperCase = /[A-Z]/.test(upass),
             hasLowerCase = /[a-z]/.test(upass),
             hasNumbers = /\d/.test(upass),
-            hasNonalphas = /\W/.test(upass);
+            hasNonalphas = /\W/.test(upass),
+
+            //Email validation
+            regex = /^[^a-z]{4,11}[0-9]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
+            regex2 = /^[^0-9]{1,10}[a-z]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
 
         //Form verification before submission
-        if (umail == "" || upass == "" || cupass == "" || uname == "") {
+        if (umail === "" || upass === "" || cupass === "" || uname === "") {
             alert("Please fill in all your details.");
             return false;
-        } else if (upass != cupass) {
+        } else if (upass !== cupass) {
             alert("Password does not match.");
             return false;
         } else if (upass.length < 6 || hasUpperCase + hasLowerCase + hasNumbers + hasNonalphas < 3) {
             alert("Password is too weak, please include a mix of upper and lowercase letters, numbers and no symbols.");
             return false;
         } else {
-            //Email validation
-            var regex = /^[^a-z]{4,11}[0-9]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/,
-                regex2 = /^[^0-9]{1,10}[a-z]+\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
 
             if (regex.test(umail)) {
                 //Email validation for student emails
@@ -90,8 +91,8 @@ window.onload = function () {
                             });
                         }).catch(function (error) {
                             // Handle Errors here.
-                            var errorCode = error.code;
-                            var errorMessage = error.message;
+                            var errorCode = error.code,
+                                errorMessage = error.message;
 
                             alert(errorMessage);
                         });
@@ -138,8 +139,8 @@ window.onload = function () {
                             });
                         }).catch(function (error) {
                             // Handle Errors here.
-                            var errorCode = error.code;
-                            var errorMessage = error.message;
+                            var errorCode = error.code,
+                                errorMessage = error.message;
 
                             alert(errorMessage);
                         });

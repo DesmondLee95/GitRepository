@@ -37,7 +37,7 @@ var selectedFile;
 var selectedFileSize;
 var progressBar = document.getElementById('upload_progress');
 var filename = document.getElementById("upload_text");
-var fileExtValidate = /([a-zA-Z0-9\s_\\.\-\(\):])+(.avi|.AVI|.wmv|.WMV|.flv|.FLV|.mpg|.MPG|.mp4|.MP4|.mkv|.MKV)$/;
+var fileExtValidate = /(.*?)\.(avi|AVI|wmv|WMV|flv|FLV|mpg|MPG|mp4|MP4|mkv|MKV|mov|MOV|3gp|3GP|webm|WEBM)$/;
 
 document.getElementById("file").addEventListener('change', function (e) {
     'use strict';
@@ -81,7 +81,7 @@ function uploadFile() {
         upload = storageRef.put(selectedFile);
 
     //Video information validation
-    if (video_name == "" || video_tag == "" || video_category == "" || video_desc == "" || selectedFile == null || selectedFile == "") {
+    if (video_name === "" || video_tag === "" || video_category === "" || video_desc === "" || selectedFile === null || selectedFile === "") {
         alert("Please fill in all details for your video file.");
     } else {
         //Validate video name length
@@ -94,27 +94,24 @@ function uploadFile() {
                 progressBar.value = percentage;
                 switch (snapshot.state) {
                     case firebase.storage.TaskState.PAUSED:
-                        console.log('Upload is paused');
+                        //Upload is paused
                         break;
                     case firebase.storage.TaskState.RUNNING:
-                        console.log('Upload is running');
+                        //Upload is running
                         break;
                 }
             },
             function (error) {
                 switch (error.code) {
                     case 'storage/unauthorized':
-                        console.log('Storage/unauthorized');
                         alert("Upload has failed! An error has happened.");
                         // User doesn't have permission to access the object
                         break;
                     case 'storage/canceled':
-                        console.log('Storage/canceled');
                         alert("Upload has been canceled.");
                         // User canceled the upload
                         break;
                     case 'storage/unknown':
-                        console.log('Storage/unknown');
                         alert("Upload has failed! An error has happened.");
                         // Unknown error occurred, inspect error.serverResponse
                         break;

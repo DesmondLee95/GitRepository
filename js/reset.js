@@ -29,7 +29,6 @@ function resetPass() {
         window.location = "login.html";
     }).catch(function (error) {
         // An error happened.
-        console.log("Email has not been sent.");
         alert("This email address does not exist.");
         document.getElementById('user_mail').value = "";
         document.getElementById('user_mail').focus();

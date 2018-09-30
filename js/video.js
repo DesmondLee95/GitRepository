@@ -33,6 +33,8 @@ db.settings({
     timestampsInSnapshots: true
 });
 
+getUserImage();
+
 //Disable post button if input is empty or starts with a SPACE
 function emptyInput() {
     'use strict';
@@ -45,6 +47,22 @@ function emptyInput() {
     } else {
         document.getElementById('post').disabled = true;
     }
+}
+
+//Get current user profile image to display in comment area
+function getUserImage() {
+    'use strict';
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            var userRef = db.collection("Users").doc(user.email);
+            userRef.get().then(function (doc) {
+                if (doc.exists) {
+                    document.getElementById('userimg').src = doc.data().photoURL;
+                }
+            });
+        }
+    });
 }
 
 //Creates the comment structure and content when button is pressed.
@@ -78,9 +96,8 @@ function createComments() {
                                 TextColDivContent = document.createTextNode(userInput),
                                 userRowDivContent = document.createTextNode(username),
                                 cgroup = document.getElementById("commentGroup");
-
-                            // TODO
-                            userImage.src = 'https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7';
+                            //Attributes for user profile image
+                            userImage.src = userphoto;
                             userImage.setAttribute("height", "30");
                             userImage.setAttribute("width", "30");
                             userImage.setAttribute("alt", "Image");
@@ -104,9 +121,10 @@ function createComments() {
                                 comment_vid: vid_id,
                                 comment_desc: userInput,
                                 comment_user: userId, //TODO
-                                comment_userPic: userphoto,
                                 comment_date: new Date()
                             });
+                            document.getElementById("vid_comment").value = "";
+                            document.getElementById('post').disabled = true;
                         }
                     });
                 }
@@ -132,6 +150,7 @@ db.collection("Comments").where("comment_vid", "==", "L9TVrlFdpQHgrXgTWlVo").ord
             db.collection("Users").doc(userId).get().then(function (doc) {
                 //Create structure for previous stored comments.
                 var username = doc.data().Name,
+                    userphoto = doc.data().photoURL,
                     bigDiv = document.createElement("div"),
                     ImgColDiv = document.createElement("div"),
                     TextColDiv = document.createElement("div"),
@@ -141,7 +160,7 @@ db.collection("Comments").where("comment_vid", "==", "L9TVrlFdpQHgrXgTWlVo").ord
                     userRowDivContent = document.createTextNode(username),
                     cgroup = document.getElementById("commentGroup");
                 //Attributes for user profile image
-                userImage.src = 'https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7'; //@TODO
+                userImage.src = userphoto;
                 userImage.setAttribute("height", "30");
                 userImage.setAttribute("width", "30");
                 userImage.setAttribute("alt", "Image");
@@ -159,7 +178,7 @@ db.collection("Comments").where("comment_vid", "==", "L9TVrlFdpQHgrXgTWlVo").ord
                 TextColDiv.appendChild(TextColDivContent);
 
                 cgroup.append(bigDiv);
-            })
+            });
         });
     })
     .catch(function (error) {

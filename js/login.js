@@ -1,5 +1,6 @@
 /*jslint devel: true*/
 /*eslint-env browser*/
+/* exported login */
 
 var config = {
     apiKey: "AIzaSyBM0e_dkZOgrC5v5kk1t1loGAj1GiFntyA",
@@ -32,8 +33,8 @@ function login() {
             });
         }).catch(function (error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            var errorCode = error.code,
+                errorMessage = error.message;
 
             window.alert("Error: " + errorMessage);
             // ...
