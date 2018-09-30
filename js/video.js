@@ -1,5 +1,7 @@
 /*jslint devel: true*/
 /*eslint-env browser*/
+/* exported createComments */
+/* exported emptyInput */
 
 var config = {
     apiKey: "AIzaSyBM0e_dkZOgrC5v5kk1t1loGAj1GiFntyA",
@@ -59,7 +61,6 @@ function createComments() {
 
                     //Get current video's ID number to bind comment with video.
                     var vid_id = doc.id;
-                    console.log(vid_id);
 
                     userRef.get().then(function (doc) {
                         if (doc.exists) {
@@ -83,8 +84,6 @@ function createComments() {
                             userImage.setAttribute("height", "30");
                             userImage.setAttribute("width", "30");
                             userImage.setAttribute("alt", "Image");
-                            //var ImgColDivContent = doc.data()
-
 
                             bigDiv.className = 'row commentedBox';
                             ImgColDiv.className = 'col-md-1 col-sm-1 col-xs-2 imageBoxComment';
@@ -105,7 +104,8 @@ function createComments() {
                                 comment_vid: vid_id,
                                 comment_desc: userInput,
                                 comment_user: userId, //TODO
-                                comment_userPic: userphoto
+                                comment_userPic: userphoto,
+                                comment_date: new Date()
                             });
                         }
                     });
@@ -119,44 +119,47 @@ function createComments() {
 }
 
 //Display out previous comments and append them by using for loop.
-db.collection("Comments").where("comment_vid", "==", "L9TVrlFdpQHgrXgTWlVo") //TODO
+db.collection("Comments").where("comment_vid", "==", "L9TVrlFdpQHgrXgTWlVo").orderBy("comment_date", "desc") //TODO
     .get()
     .then(function (querySnapshot) {
         'use strict';
 
         querySnapshot.forEach(function (doc) {
 
-            var userNames = doc.data().comment_user,
-                userComments = doc.data().comment_desc,
+            var userId = doc.data().comment_user,
+                userComments = doc.data().comment_desc;
+
+            db.collection("Users").doc(userId).get().then(function (doc) {
                 //Create structure for previous stored comments.
-                bigDiv = document.createElement("div"),
-                ImgColDiv = document.createElement("div"),
-                TextColDiv = document.createElement("div"),
-                userRowDiv = document.createElement("div"),
-                userImage = document.createElement("img"),
-                TextColDivContent = document.createTextNode(userComments),
-                userRowDivContent = document.createTextNode(userNames),
-                cgroup = document.getElementById("commentGroup");
-            userImage.src = 'https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7'; //@TODO
-            userImage.setAttribute("height", "30");
-            userImage.setAttribute("width", "30");
-            userImage.setAttribute("alt", "Image");
-            //var ImgColDivContent = doc.data()
+                var username = doc.data().Name,
+                    bigDiv = document.createElement("div"),
+                    ImgColDiv = document.createElement("div"),
+                    TextColDiv = document.createElement("div"),
+                    userRowDiv = document.createElement("div"),
+                    userImage = document.createElement("img"),
+                    TextColDivContent = document.createTextNode(userComments),
+                    userRowDivContent = document.createTextNode(username),
+                    cgroup = document.getElementById("commentGroup");
+                //Attributes for user profile image
+                userImage.src = 'https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7'; //@TODO
+                userImage.setAttribute("height", "30");
+                userImage.setAttribute("width", "30");
+                userImage.setAttribute("alt", "Image");
 
+                bigDiv.className = 'row commentedBox';
+                ImgColDiv.className = 'col-md-1 col-sm-1 col-xs-2 imageBoxComment';
+                TextColDiv.className = 'col-md-11 col-sm-11 col-xs-10 commentArea';
+                userRowDiv.className = 'col-md-11 col-sm-11 col-xs-10 commentPoster';
+                bigDiv.appendChild(ImgColDiv);
+                bigDiv.appendChild(userRowDiv);
+                bigDiv.appendChild(TextColDiv);
 
-            bigDiv.className = 'row commentedBox';
-            ImgColDiv.className = 'col-md-1 col-sm-1 col-xs-2 imageBoxComment';
-            TextColDiv.className = 'col-md-11 col-sm-11 col-xs-10 commentArea';
-            userRowDiv.className = 'col-md-11 col-sm-11 col-xs-10 commentPoster';
-            bigDiv.appendChild(ImgColDiv);
-            bigDiv.appendChild(userRowDiv);
-            bigDiv.appendChild(TextColDiv);
+                ImgColDiv.appendChild(userImage);
+                userRowDiv.appendChild(userRowDivContent);
+                TextColDiv.appendChild(TextColDivContent);
 
-            ImgColDiv.appendChild(userImage);
-            userRowDiv.appendChild(userRowDivContent);
-            TextColDiv.appendChild(TextColDivContent);
-
-            cgroup.append(bigDiv);
+                cgroup.append(bigDiv);
+            })
         });
     })
     .catch(function (error) {
@@ -175,8 +178,6 @@ videosRef.get().then(function (doc) {
             month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][videoDate.getMonth()],
             uploadDate = month + ' ' + videoDate.getDate() + ', ' + videoDate.getFullYear();
 
-        console.log(doc.data());
-
         document.getElementById('video_name').innerHTML = doc.data().video_name;
         document.getElementById('video_rating').innerHTML = doc.data().video_rating;
         document.getElementById('uploader').innerHTML = doc.data().video_uploader;
@@ -184,6 +185,7 @@ videosRef.get().then(function (doc) {
         document.getElementById('uploaded_date').innerHTML = uploadDate;
         document.getElementById('videolink').src = doc.data().video_link;
         document.getElementById('video_category').innerHTML = doc.data().video_category;
+        document.getElementById('video_tag').innerHTML = doc.data().video_tags;
     } else {
         console.log("No such document!");
     }
