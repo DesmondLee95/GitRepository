@@ -73,6 +73,10 @@ div.commentArea {
     text-align: right;
 }
 
+.vid_rating {
+    font-weight: bold;
+}
+
 .vid_comment {
     width: 100%;
     padding: 5px;
@@ -89,7 +93,7 @@ div.commentArea {
 
 .vidrate_views {
     text-align: left;
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 7px;
 }
 
@@ -121,11 +125,14 @@ div.commentArea {
     cursor: pointer;
 }
 
+.checked {
+    color: red;
+}
+
 .commentPoster {
     font-weight: bold;
     font-size: 12px;
     padding: 0px 10px 0px 0px;
-    color: 
 }
 
 .flagbtn {
@@ -171,4 +178,27 @@ a.links:hover {
 .videoPlayer {
     width: 100%;
     height: 100%;
+}
+
+.stars-outer {
+    display: inline-block;
+    position: relative;
+}
+
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #FF0000;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 50%;
 }

@@ -77,8 +77,10 @@ function uploadFile() {
         //Convert value to Boolean
         visibility_boolean = (visibility === "true"),
         filename = selectedFile.name,
-        storageRef = firebase.storage().ref('userVideos/' + filename),
-        upload = storageRef.put(selectedFile);
+        user = firebase.auth().currentUser;
+
+    var storageRef = firebase.storage().ref('userVideos/' + user.email + '/videos/' + filename);
+    var upload = storageRef.put(selectedFile);
 
     //Video information validation
     if (video_name === "" || video_tag === "" || video_category === "" || video_desc === "" || selectedFile === null || selectedFile === "") {
