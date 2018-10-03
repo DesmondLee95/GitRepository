@@ -52,8 +52,19 @@
             <div class="col-md-3 vidrate_views">
                 <div class="fa stars-outer">
                     <div class="fas stars-inner"></div>
-                </div> <span class="vid_rating">2.5</span>
-                | <span id="video_views">12314232</span> views
+                </div>
+                <strong><span id="vid_rating"></span></strong> | <span id="video_views"></span> views
+            </div>
+            <div class="col-md-3">
+                <select id="rates">
+                    <option disabled selected value>Choose a rating</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                <button type="button" id="submitBtnX" onclick="submitRating()">Yo</button>
             </div>
         </div>
 
@@ -94,7 +105,7 @@
         <div class="row">
             <div class="col-md-1 col-sm-1 col-xs-2 imageBox">
                 <label for="userBtn">
-                    <img id="userimg" class="userimg" height="35" width="35" />
+                    <img id="userimg" class="userimg" src="https://firebasestorage.googleapis.com/v0/b/educational-video-learning-app.appspot.com/o/profileImages%2Fdownload.jpg?alt=media&token=4a6a7e03-7fef-4abb-adf0-0c7e753235b7" height="35" width="35" />
                     <button type="button" id="userBtn" class="userBtn" onclick=""></button>
                 </label>
             </div>

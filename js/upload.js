@@ -129,18 +129,17 @@ function uploadFile() {
                                 //Write video information into Firestore when video is uploaded to Storage.
                                 docRef.get().then(function (doc) {
                                     if (doc.exists) {
-                                        var user;
-                                        user = doc.data().Name;
                                         db.collection("Videos").add({
                                                 video_link: downloadURL,
-                                                video_uploader: user,
+                                                video_uploader: user.email,
                                                 video_category: video_category,
                                                 video_tags: video_tag,
                                                 video_desc: video_desc,
                                                 date_uploaded: new Date(),
                                                 video_visibility: visibility_boolean,
                                                 video_rating: 0,
-                                                video_name: video_name
+                                                video_name: video_name,
+                                                video_views: 0
                                             })
                                             .then(function () {
                                                 //Clear form when video is successfully updated
@@ -167,7 +166,6 @@ function uploadFile() {
                                 });
                             } else {
                                 alert("Please sign-in first!");
-                                window.location = "index.html";
                             }
                         });
                     }
