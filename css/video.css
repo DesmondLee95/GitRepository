@@ -175,6 +175,11 @@ a.links:hover {
     text-align: center;
 }
 
+video {
+  width: 100%;
+  height: auto;
+}
+
 .videoPlayer {
     width: 100%;
     height: 100%;
@@ -185,7 +190,7 @@ a.links:hover {
     position: relative;
 }
 
-.stars-outer::before {
+/*.stars-outer::before {
     content: "\f005 \f005 \f005 \f005 \f005";
 }
 
@@ -201,4 +206,27 @@ a.links:hover {
     white-space: nowrap;
     overflow: hidden;
     width: 0%;
+}
+
+.checked {
+    color: red;
+}*/
+
+.star {
+	background: none;
+	border: none;
+	font-size: 1.5em;
+	padding: 0em;
+}
+
+.screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
